@@ -1,0 +1,37 @@
+@echo off
+color 0a
+set nerd=0
+set vary=10000
+CHOICE /c yn /m "Hack The System"
+IF ERRORLEVEL 2 GOTO END
+IF ERRORLEVEL 1 GOTO START
+:Start
+set /a HACK=%random% %%2 +1
+IF %HACK%==1 <nul set /p dummy="0" 
+IF %HACK%==2 <nul set /p dummy="1" 
+set /a nerd=nerd+1
+IF %nerd%==%vary% goto hack
+goto start
+:hack
+echo.
+echo.
+echo.
+<nul set /p dummy2="PAUSING THE HACKING, PLEASE WAIT "
+sleep 1
+<nul set /p dummy2="." 
+sleep 1
+<nul set /p dummy2="." 
+sleep 1
+<nul set /p dummy2="." 
+echo.
+echo RESUMING HACKING
+sleep 1
+echo.
+sleep 1
+echo.
+set nerd=0
+set /a vary=%random% %% 15000-10000
+goto start
+:end
+echo Fuckin' Nerd
+Pause
